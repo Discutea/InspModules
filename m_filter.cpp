@@ -365,7 +365,7 @@ ModResult ModuleFilter::OnUserPreNotice(User* user,void* dest,int target_type, s
         	}
 		if (f->action == FA_LOG)
 		{
-			ServerInstance->SNO->WriteGlobalSno('a', "FILTER: "+user->nick+" had their message filtered, target was "+target+": ("+f->reason+") Text: "+text);
+			ServerInstance->SNO->WriteGlobalSno('a', "FILTER: "+user->nick+" had their message matched, target was "+target+": ("+f->reason+") Text: "+text);
         	}
 		else if (f->action == FA_SILENT)
 		{
@@ -391,7 +391,7 @@ ModResult ModuleFilter::OnUserPreNotice(User* user,void* dest,int target_type, s
 				delete gl;
 		}
 
-		ServerInstance->Logs->Log("FILTER",DEFAULT,"FILTER: "+ user->nick + " had their message filtered, target was " + target + ": " + f->reason + " Action: " + ModuleFilter::FilterActionToString(f->action));
+		ServerInstance->Logs->Log("FILTER",DEFAULT,"FILTER: "+ user->nick + " had their message matched, target was " + target + ": " + f->reason + " Action: " + ModuleFilter::FilterActionToString(f->action));
 		return MOD_RES_DENY;
 	}
 	return MOD_RES_PASSTHRU;
